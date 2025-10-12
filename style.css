@@ -1,0 +1,173 @@
+/* =================== VARIÁVEIS CSS (Temas SIMPLIFICADO) =================== */
+:root {
+    --text-color: white;
+    --background-color: #242424; /* Fundo Escuro Simples */
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(0, 0, 0, 0.05);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Modo Light (Variáveis de Tema Claro SIMPLIFICADO) */
+html.light {
+    --text-color: black;
+    --background-color: #f7f7f7; /* Fundo Claro Simples */
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* =================== ESTILOS GERAIS =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Usamos cor sólida para simplificar */
+    background-color: var(--background-color);
+    height: 100vh;
+
+    /* DESAFIO LEVE #3: Transição suave para o fundo */
+    transition: background-color 0.5s;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+
+    /* DESAFIO LEVE #3: Transição suave para a cor do texto */
+    transition: color 0.5s;
+}
+
+#container {
+    width: 100%;
+    max-width: 588px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+}
+
+
+/* =================== PERFIL =================== */
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img {
+    width: 112px;
+    border-radius: 50%;
+}
+
+#profile p {
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+
+/* =================== SWITCH (Botão de Tema) =================== */
+#switch {
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    /* Simplificado: Fundo branco, sem imagem */
+    background: white no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 10;
+    transform: translateY(-50%);
+
+    animation: slide-back 0.4s forwards;
+}
+
+/* Posição do botão no modo light */
+.light #switch button {
+    animation: slide-in 0.4s forwards;
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+/* =================== LINKS (Botões) =================== */
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+
+    /* DESAFIO LEVE #1: Botões arredondados */
+    border-radius: 9999px;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    text-decoration: none;
+    font-weight: 500;
+
+    /* DESAFIO LEVE #1: Transição suave no hover */
+    transition: background 0.5s, border 0.5s;
+}
+
+/* Pseudo-seletor para o hover */
+ul li a:hover {
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+}
+
+
+/* =================== RODAPÉ (Footer) =================== */
+footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* =================== ANIMAÇÕES CSS =================== */
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
+}
