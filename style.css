@@ -72,8 +72,10 @@ body * {
 /* =================== SWITCH (Botão de Tema) =================== */
 #switch {
     position: relative;
-    width: 64px;
+    width: 100px;
+    height:40px;
     margin: 4px auto;
+    cursor: pointer;
 }
 
 #switch button {
@@ -86,11 +88,13 @@ body * {
 
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 8px;
     z-index: 10;
     transform: translateY(-50%);
 
     animation: slide-back 0.4s forwards;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 /* Posição do botão no modo light */
@@ -156,18 +160,19 @@ footer {
 /* =================== ANIMAÇÕES CSS =================== */
 @keyframes slide-in {
     from {
-        left: 0;
+        left: 8px;
     }
     to {
-        left: 50%;
+        left: 60%;
     }
 }
 
 @keyframes slide-back {
     from {
-        left: 50%;
+        left: 60%;
     }
     to {
-        left: 0;
+        left: 8px;
     }
+
 }
