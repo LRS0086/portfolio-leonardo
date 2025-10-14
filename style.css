@@ -71,6 +71,18 @@ body * {
 
 /* =================== SWITCH (Botão de Tema) =================== */
 #switch {
+    /* Define a área onde os ícones e o botão vão aparecer */
+    position: relative;
+    width: 80px; /* Largura ajustada para ser um pouco maior que o botão */
+    height: 32px; /* Altura do botão */
+    margin: 4px auto;
+    cursor: pointer;
+    /* Adicionar um fundo para dar a sensação de "trilha" visual, já que o span foi removido */
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 9999px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     position: relative;
     width: 100px;
     height:40px;
@@ -79,39 +91,61 @@ body * {
 }
 
 #switch button {
-    width: 32px;
-    height: 32px;
-    /* Simplificado: Fundo branco, sem imagem */
+    width: 30px; /* Levemente menor que a altura do switch */
+    height: 30px;
     background: white no-repeat center;
     border: 0;
     border-radius: 50%;
 
     position: absolute;
     top: 50%;
-    left: 8px;
+    /* Posição inicial: 1px da borda esquerda */
+    left: 1px; 
     z-index: 10;
     transform: translateY(-50%);
 
     animation: slide-back 0.4s forwards;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);     
 }
 
-/* Posição do botão no modo light */
+/* ------------------- ESTILOS DOS ÍCONES (SOL E LUA) ------------------- */
+#switch i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px; /* Tamanho discreto */
+    color: var(--text-color); 
+    transition: opacity 0.4s ease-in-out; 
+    z-index: 5;
+}
+
+/* Ícone da Lua (Dark Mode) - Padrão Visível */
+#switch .fa-moon {
+    left: 5px; /* Posição à esquerda */
+    opacity: 1; 
+}
+
+/* Ícone do Sol (Light Mode) - Padrão Invisível */
+#switch .fa-sun {
+    right: 5px; /* Posição à direita */
+    opacity: 0;
+}
+
+/* MUDANÇA DE VISIBILIDADE NO MODO CLARO (html.light) */
+html.light #switch .fa-moon {
+    opacity: 0; 
+}
+
+html.light #switch .fa-sun {
+    opacity: 1; 
+}
+
+/* Posição do botão no modo light (slide para a direita) */
 .light #switch button {
     animation: slide-in 0.4s forwards;
 }
 
-#switch span {
-    display: block;
-    width: 64px;
-    height: 24px;
-    background: var(--surface-color);
-    border: 1px solid var(--stroke-color);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 9999px;
-}
+
 
 /* =================== LINKS (Botões) =================== */
 ul {
@@ -160,19 +194,19 @@ footer {
 /* =================== ANIMAÇÕES CSS =================== */
 @keyframes slide-in {
     from {
-        left: 8px;
+        left: 1px; /* Começa na borda esquerda */
     }
     to {
-        left: 60%;
+        left: 49px; /* Termina na borda direita (80px - 30px - 1px) */
     }
 }
 
 @keyframes slide-back {
     from {
-        left: 60%;
+        left: 49px;
     }
     to {
-        left: 8px;
+        left: 1px;
     }
-
 }
+
